@@ -2,7 +2,7 @@
 
 **Objective:**  
 Train a classifier designed to take two images as input and predict whether the shapes depicted in them are identical.
-
+![Images Examples](images/samples.png)
 
 ### Project Layout
 
