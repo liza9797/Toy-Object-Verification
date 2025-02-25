@@ -43,6 +43,7 @@ Improvements:
 
 - Create a balanced dataset for each shape size, which should help eliminate these errors.
 
+---
 ### Project Layout
 
 **Core Notebooks:**
@@ -65,3 +66,14 @@ Improvements:
 - **weights/**  
   Contains experiment folders with the saved best weights.
    
+---
+### To Reproduce The Results:
+
+Create a Python virtual environment and install all required dependencies. We use ipykernel to make the environment available in Jupyter Notebook. Start the jupyter and go through the notebooks.
+```bash
+python -m venv venv
+source venv/bin/activate  
+pip install -r requirements.txt
+python -m ipykernel install --user --name=venv --display-name "Python (venv)"
+jupyter notebook
+```
