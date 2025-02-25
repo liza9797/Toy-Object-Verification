@@ -10,6 +10,16 @@ Each image is 32x32 pixels and contains either a circle or a square with random 
 
 ### 2. Proposed Approaches  
 
+| Architecture                        | Merging Method                                                       | Loss                                               |
+|-------------------------------------|----------------------------------------------------------------------|----------------------------------------------------|
+| **Approach 1.1: Metric Learning**   | Distance metrics (e.g., cosine similarity, L2 norm, L1 norm)         | Contrastive loss / Triplet loss (if using triplets) |
+| **Approach 1.2: Vector Merging**      | Concatenation                                                        | Binary Cross-Entropy (BCE)                         |
+| **Approach 1.2: Vector Merging**      | Element-wise multiplication                                          | Binary Cross-Entropy (BCE)                         |
+| **Approach 1.2: Vector Merging**      | Element-wise difference/sum                                            | Binary Cross-Entropy (BCE)                         |
+| **Approach 1.2: Vector Merging**      | Bilinear pooling (Bilinear Pooling)                                  | Binary Cross-Entropy (BCE)                         |
+| **Approach 2: Cross-Attention**       | Cross-attention applied to feature maps                              | Binary Cross-Entropy (BCE) or appropriate classification loss |
+| **Approach 3: Dynamic Models**        | [Not specified]                                                      | [Not specified]                                    |
+
 ### Project Layout
 
 **Core Notebooks:**
