@@ -16,10 +16,32 @@ Each image is 32x32 pixels and contains either a circle or a square with random 
 |                                     | **Method B:** Element-wise multiplication                                      |BCE                             |
 |                                     | **Method C:** Element-wise difference or sum                                   | BCE                             |
 |                                     | **Method D:** Bilinear pooling (Bilinear Pooling)                              | BCE                             |
-| **Cross-Attention**       | Apply cross-attention to the feature maps so that features from one image guide the selection of features from the other. Afterwards, the features can be: <br> - concatenated, <br> - combined via element-wise multiplication. <br> Than, the final vector is passed throught FNN to predict  the label.   | BCE |
-| **Hierarchical Cross-Attention**       | Apply cross-attention to feature maps from different hierarchical levels. The feature representations can then be either concatenated or upsampled to a common dimensionality, similar to Feature Pyramid Pooling (FPP), to better capture multi-scale dependencies.| BCE |
+| **Cross-Attention:**  Apply cross-attention to the feature maps so that features from one image guide the selection of features from the other. Afterwards, the features are merged and passed throught FNN to predict the label.     | Cross-attention, then features are either: <br> - concatenated, <br> - or combined via element-wise multiplication.  | BCE |
+| **Hierarchical Cross-Attention:** Apply cross-attention to feature maps from different hierarchical levels.      | Hierarchical Cross-Attention, then the feature representations can be either concatenated or upsampled to a common dimensionality, similar to Feature Pyramid Pooling (FPP), to better capture multi-scale dependencies.| BCE |
 
-Among the proposed models, the one with Cross-Attention followed by Transformer layers was chosen and trained for this task.
+Among the proposed models, the **Cross-Attention-based architecture** was chosen. Cross-Attention is applied to the feature maps of each image, where each image serves as the attention context for the other. This process generates vector representations, which are then concatenated and passed through Transformer layers and an FNN to predict the binary label. For more ditails view [part2_train_coattention_model.ipynb](part2_train_coattention_model.ipynb)
+
+
+### 3. Results
+
+**Test dataset** was formed with 20,000 pairs of images containing different shapes and 20,000 pairs with identical images (10,000 per shape).
+
+On the test set, the model achieved:
+
+- Precision: 0.9963084904719146
+- Recall: 0.9986
+- Accuracy: 0.99745
+- F1 Score: 0.9974529291314987
+- ROC AUC: 1
+
+The model makes a few minor errors:
+
+- On images with small shapes near the boundary, where transformations cause imprecise object shapes.
+- Some errors occur on large/small shapes, which was expected during training due to a strong imbalance in shape sizes. For more ditails view [part1_data_generation.ipynb](part1_data_generation.ipynb)
+
+Improvements:
+
+- Create a balanced dataset for each shape size, which should help eliminate these errors.
 
 ### Project Layout
 
