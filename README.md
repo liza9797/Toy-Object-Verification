@@ -4,6 +4,12 @@
 Train a classifier designed to take two images as input and predict whether the shapes depicted in them are identical.
 ![Images Examples](images/samples.png)
 
+### 1. Data Details
+
+Each image is 32x32 pixels and contains either a circle or a square with random size, position, and rotation angle. The training set includes 5,000 images of squares and 5,000 images of circles to enable evaluation on unseen data, while the validation set has 1,000 images of each. For efficiency, only the parameters for sample generation are stored rather than the actual images. The target is represented by a binary label: **1** if the shapes in the pair are identical, and **0** if they differ.
+
+### 2. Proposed Approaches  
+
 ### Project Layout
 
 **Core Notebooks:**
